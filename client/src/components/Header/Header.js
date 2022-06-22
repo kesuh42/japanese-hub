@@ -1,6 +1,15 @@
 import React from "react";
 
 function Header () {
+    const JishoSearch = event => {
+        event.preventDefault();
+
+        const searchTerm = event.target[0].value;
+
+        window.open("google.com")
+        // window.open = `jisho.org/search/${searchTerm}`;
+    };
+
     return (
         <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,9 +30,9 @@ function Header () {
                     <a class="nav-link" href="/archive">Archive</a>
                 </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline my-2 my-lg-0" onSubmit={JishoSearch}>
+                <input name="searchTerm" class="form-control mr-sm-2" type="search" placeholder="Search Jisho for a Word" aria-label="Search"></input>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go</button>
                 </form>
             </div>
             </nav>
