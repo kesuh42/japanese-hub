@@ -1,11 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const JishoAPI = require("unofficial-jisho-api");
 
-//Dummy test route to see if server is working
-router.get("/test", (req, res) =>{
-    console.log("test route")
-    res.send("Test route works!")
+//Jisho Search
+router.get("/JishoSearch", (req, res) => {
+    const jisho = new JishoAPI();
+    jisho.searchForPhrase(req.query.searchterm).then(result => {
+        res.send(result.data[0]);
+    });
 });
+
+//Database routes
 
 //A route to retrieve the list of words
 
