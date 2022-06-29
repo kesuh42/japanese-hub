@@ -2,11 +2,65 @@ const express = require("express");
 const router = express.Router();
 const JishoAPI = require("unofficial-jisho-api");
 
+// Example of JishoAPI Data
+// {
+//     "slug": "日常",
+//     "is_common": true,
+//     "tags": [
+//         "wanikani17"
+//     ],
+//     "jlpt": [
+//         "jlpt-n3"
+//     ],
+//     "japanese": [
+//         {
+//             "word": "日常",
+//             "reading": "にちじょう"
+//         }
+//     ],
+//     "senses": [
+//         {
+//             "english_definitions": [
+//                 "everyday",
+//                 "daily",
+//                 "ordinary",
+//                 "usual",
+//                 "routine",
+//                 "regular"
+//             ],
+//             "parts_of_speech": [
+//                 "Noun which may take the genitive case particle 'no'",
+//                 "Noun",
+//                 "Adverb (fukushi)"
+//             ],
+//             "links": [],
+//             "tags": [],
+//             "restrictions": [],
+//             "see_also": [],
+//             "antonyms": [],
+//             "source": [],
+//             "info": []
+//         }
+//     ],
+//     "attribution": {
+//         "jmdict": true,
+//         "jmnedict": false,
+//         "dbpedia": false
+//     }
+// }
+
 //Jisho Search
 router.get("/JishoSearch", (req, res) => {
     const jisho = new JishoAPI();
     jisho.searchForPhrase(req.query.searchterm).then(result => {
-        res.send(result.data[0]);
+        const targetWord = result.data[0];
+        res.send(
+            {
+                "word": targetWord.japanese[0].word,
+                "reading": targetWord.japanese[0].reading,
+                "definition": targetWord.senses.map(definition => definition.english_definitions)
+            }
+        );
     });
 });
 
