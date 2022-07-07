@@ -1,9 +1,9 @@
 import React from "react";
 
-function Home () {
+function Archive () {
     return (
         <div>暗記滅殺</div>
     );
 };
 
-export default Home;
+export default Archive;

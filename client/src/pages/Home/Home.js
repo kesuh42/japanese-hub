@@ -3,7 +3,7 @@ import "./Home.css"
 
 function Home () {
     return (
-        <div class="body">
+        <div className="body">
             <h1>Welcome!</h1>
             <p>暗記滅殺!!</p>
         </div>

@@ -1,10 +1,29 @@
 import React from "react";
+import WordCard from "../../components/WordCard/WordCard";
 
-function Home () {
-    const dummyData = {}
+function List () {
+    const dummyData = [{
+        "word": "戦",
+        "reading": "いくさ",
+        "definition": [
+            [
+                "war",
+                "battle",
+                "campaign",
+                "fight"
+            ],
+            [
+                "troops",
+                "forces"
+            ]
+        ]
+    }]
     return (
-        <div>暗記滅殺</div>
+        <div className="cardContainer">
+            <WordCard />
+            <WordCard />
+        </div>
     );
 };
 
-export default Home;
+export default List;
