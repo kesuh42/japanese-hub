@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 function WordCard () {
 
     return (
-        <Card sx={{ width: 1/4 }}>
+        <Card sx={{ width: 1 }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             Word of the Day
