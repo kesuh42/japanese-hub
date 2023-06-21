@@ -57,6 +57,7 @@ router.get("/JishoSearch", (req, res) => {
         res.send(
             {
                 "word": targetWord.japanese[0].word,
+                "parts_of_speech": targetWord.senses[0].parts_of_speech,
                 "reading": targetWord.japanese[0].reading,
                 "definition": targetWord.senses.map(definition => definition.english_definitions)
             }

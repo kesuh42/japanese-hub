@@ -11,24 +11,22 @@ function WordCard () {
     return (
         <Card sx={{ width: 1 }}>
         <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             Word of the Day
-          </Typography>
+          </Typography> */}
           <Typography variant="h5" component="div">
-            benevolent
+            Word
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            adjective
+            Part of Speech (i.e. noun)
           </Typography>
           <Typography variant="body2">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
+            Definitions
           </Typography>
         </CardContent>
-        <CardActions>
+        {/* <CardActions>
           <Button size="small">Learn More</Button>
-        </CardActions>
+        </CardActions> */}
       </Card>
     );
 }
