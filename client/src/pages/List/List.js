@@ -77,22 +77,34 @@ function List() {
             ]
         ]
     }
-]
+    ]
+    const CardDeck = dummyData.map((data) =>
+        <Grid item xs={6} md={4}>
+            <WordCard word={data.word} part_of_speech={data.parts_of_speech} reading={data.reading} definition={data.definition}/>
+        </Grid>
+    )
+    // return (
+    //     <Box m={4} sx={{ flexGrow: 2 }}>
+    //         <Grid container spacing={4}>
+    //             <Grid item xs={6} md={4}>
+    //                 <WordCard />
+    //             </Grid>
+    //             <Grid item xs={6} md={4}>
+    //                 <WordCard />
+    //             </Grid>
+    //             <Grid item xs={6} md={4}>
+    //                 <WordCard />
+    //             </Grid>
+    //             <Grid item xs={6} md={4}>
+    //                 <WordCard />
+    //             </Grid>
+    //         </Grid>
+    //     </Box>
+    // );
     return (
         <Box m={4} sx={{ flexGrow: 2 }}>
             <Grid container spacing={4}>
-                <Grid item xs={6} md={4}>
-                    <WordCard />
-                </Grid>
-                <Grid item xs={6} md={4}>
-                    <WordCard />
-                </Grid>
-                <Grid item xs={6} md={4}>
-                    <WordCard />
-                </Grid>
-                <Grid item xs={6} md={4}>
-                    <WordCard />
-                </Grid>
+                {CardDeck}
             </Grid>
         </Box>
     );

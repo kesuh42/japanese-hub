@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-function WordCard () {
+function WordCard (props) {
 
     return (
         <Card sx={{ width: 1 }}>
@@ -15,13 +15,13 @@ function WordCard () {
             Word of the Day
           </Typography> */}
           <Typography variant="h5" component="div">
-            Word
+            {props.word}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Part of Speech (i.e. noun)
+            {props.part_of_speech}
           </Typography>
           <Typography variant="body2">
-            Definitions
+            {props.definition}
           </Typography>
         </CardContent>
         {/* <CardActions>
