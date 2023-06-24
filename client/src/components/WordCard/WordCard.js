@@ -15,18 +15,20 @@ function WordCard (props) {
             Word of the Day
           </Typography> */}
           <Typography variant="h5" component="div">
-            {props.word}
+            {props.word} , {props.reading}
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {props.part_of_speech}
-          </Typography>
-          <Typography variant="body2">
-            {props.definition}
-          </Typography>
+          {props.part_of_speech.map((item) => <Typography sx={{ mb: 1.5 }} color="text.secondary">{item}</Typography>)}
+          {props.definition.map((entry) => 
+          <Typography variant="body2"> {props.definition.indexOf(entry) + 1}. {entry.map((subdefinition) => {
+            return entry.indexOf(subdefinition) + 1 < entry.length ?
+            `${subdefinition}, ` : `${subdefinition}`
+          }
+          )}</Typography>
+          )}
         </CardContent>
-        {/* <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions> */}
+        <CardActions>
+          <Button size="small">Archive Card</Button>
+        </CardActions>
       </Card>
     );
 }
