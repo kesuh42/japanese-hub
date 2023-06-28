@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const JishoAPI = require("unofficial-jisho-api");
+const mongoDB = require("../mongo")
 
 // Example of JishoAPI Data
 // {
@@ -68,8 +69,10 @@ router.get("/JishoSearch", (req, res) => {
 //Database routes
 
 //A route to retrieve the list of words
+router.get("/card", mongoDB.getCards);
 
 //A route to add a new word to the list
+router.post("/card", mongoDB.createCard);
 
 //A route to update a word in the list
 
