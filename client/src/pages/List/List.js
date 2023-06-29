@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import WordCard from "../../components/WordCard/WordCard";
 import Grid from '@mui/material/Grid';
 import { Box } from "@mui/material";
@@ -151,7 +151,16 @@ function List() {
         ]
     }
     ]
-    const CardDeck = dummyData.map((data) =>
+
+    const [cardData, setCardData] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/card')
+        .then(response => response.json())
+        .then(data => setCardData(data));
+    });
+
+    const CardDeck = cardData.map((data) =>
         <Grid item xs={6} md={4}>
             <WordCard word={data.word} part_of_speech={data.parts_of_speech} reading={data.reading} definition={data.definition}/>
         </Grid>
