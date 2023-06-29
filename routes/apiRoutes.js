@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const JishoAPI = require("unofficial-jisho-api");
-const mongoDB = require("../mongo")
+// const mongoDB = require("../mongo")
+const mongoDB = require("../mongoose")
 
 // Example of JishoAPI Data
 // {
