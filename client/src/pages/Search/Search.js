@@ -1,8 +1,42 @@
 import React from "react";
+import { TextField, Container } from '@mui/material';
 
 function Search () {
+    function handleSubmit(e) {
+        e.preventDefault();
+        fetch('http://localhost:5000/JishoSearch?searchterm=' + `${e.target.elements.searchterm.value}`)
+        .then(response => response.json())
+        .then(data => {
+            fetch("http://localhost:5000/card", 
+                {
+                    headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                    },
+                    method: "POST",
+                    body: JSON.stringify(data)
+                })
+            .then(response => console.log(response))
+        });
+    }
+
     return (
-        <div>暗記滅殺</div>
+        <Container
+            style={{
+                position: "absolute",
+                top: "40%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+            }}>
+            <form onSubmit={handleSubmit}>
+                <TextField id="outlined-basic" name="searchterm" label="Enter search term" variant="outlined" onSubmit={handleSubmit}
+                    style={{
+                        position: "absolute",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                    }} />
+            </form>
+        </Container>
     );
 };
 
