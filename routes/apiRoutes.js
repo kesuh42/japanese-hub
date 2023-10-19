@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const JishoAPI = require("unofficial-jisho-api");
-// const mongoDB = require("../mongo")
-const mongoDB = require("../mongoose")
+const cardsControllers = require("../controllers/cards-controllers")
+const axios = require("axios");
 
 // Example of JishoAPI Data
 // {
@@ -51,29 +51,27 @@ const mongoDB = require("../mongoose")
 //     }
 // }
 
-//Jisho Search
+// Jisho Search, fixed after the API changes
 router.get("/JishoSearch", (req, res) => {
-    const jisho = new JishoAPI();
-    jisho.searchForPhrase(req.query.searchterm).then(result => {
-        const targetWord = result.data[0];
-        res.send(
+    axios.get(`https://jisho.org/api/v1/search/words?keyword=${req.query.searchterm}`, { headers: { 'User-Agent': 'YOUR-SERVICE-NAME' }  })
+        .then(data =>         
+            res.send(
             {
-                "word": targetWord.japanese[0].word,
-                "part_of_speech": targetWord.senses[0].parts_of_speech,
-                "reading": targetWord.japanese[0].reading,
-                "definition": targetWord.senses.map(definition => definition.english_definitions)
+                "word": data.data.data[0].japanese[0].word,
+                "part_of_speech": data.data.data[0].senses[0].parts_of_speech,
+                "reading": data.data.data[0].japanese[0].reading,
+                "definition": data.data.data[0].senses.map(definition => definition.english_definitions)
             }
-        );
-    });
+        ));
 });
 
 //Database routes
 
 //A route to retrieve the list of words
-router.get("/card", mongoDB.getCards);
+router.get("/card", cardsControllers.getCards);
 
 //A route to add a new word to the list
-router.post("/card", mongoDB.createCard);
+router.post("/card", cardsControllers.createCard);
 
 //A route to update a word in the list
 

@@ -1,14 +1,4 @@
-const mongoose = require("mongoose");
-
-const Card = require("./models/card");
-
-mongoose.connect(
-    "mongodb+srv://KevinSuh:MWnDYa9Yghy2mZLQ@japanese-hub.bpoenps.mongodb.net/card_deck?retryWrites=true&w=majority"
-).then(() => {
-    console.log("Connection with database established")
-}).catch(() => {
-    console.log("Connection with database failed")
-});
+const Card = require('../models/card');
 
 const createCard = async(req, res, next) => {
     const createdCard = new Card({
