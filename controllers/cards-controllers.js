@@ -21,7 +21,7 @@ const getCards = async (req, res, next) => {
 const deleteCard = async (req, res, next) => {
     const cardId = req.params.id;
     const card = await Card.findById(cardId)
-    await card.removeOne();
+    await card.deleteOne();
 
     res.status(200).json({ message: 'Deleted place.' });
   };

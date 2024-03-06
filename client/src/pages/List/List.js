@@ -162,7 +162,7 @@ function List() {
 
     const CardDeck = cardData.map((data) =>
         <Grid item xs={6} md={4}>
-            <WordCard word={data.word} part_of_speech={data.parts_of_speech} reading={data.reading} definition={data.definition}/>
+            <WordCard id = {data._id} word={data.word} part_of_speech={data.parts_of_speech} reading={data.reading} definition={data.definition}/>
         </Grid>
     )
     // return (

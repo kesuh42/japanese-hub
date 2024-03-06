@@ -27,7 +27,7 @@ function WordCard (props) {
           )}
         </CardContent>
         <CardActions>
-          <Button size="small">Archive Card</Button>
+          <Button size="small">Delete Card</Button>
         </CardActions>
       </Card>
     );
