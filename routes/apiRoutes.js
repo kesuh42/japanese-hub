@@ -76,5 +76,6 @@ router.post("/card", cardsControllers.createCard);
 //A route to update a word in the list
 
 //A route to delete a word from the list
+router.delete("/:id", cardsControllers.deleteCard);
 
 module.exports = router;
