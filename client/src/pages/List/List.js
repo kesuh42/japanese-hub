@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import WordCard from "../../components/WordCard/WordCard";
 import Grid from '@mui/material/Grid';
-import { Box } from "@mui/material";
+import { Box, useThemeProps } from "@mui/material";
 
 function List() {
     const dummyData = [{
@@ -160,9 +160,15 @@ function List() {
         .then(data => setCardData(data));
     });
 
+    function cardDeleteHandler(deletedCardId) {
+        setCardData(
+            prevCards => prevCards.filter(card => card.id !== deletedCardId)
+        )
+    }
+
     const CardDeck = cardData.map((data) =>
         <Grid item xs={6} md={4}>
-            <WordCard id = {data._id} word={data.word} part_of_speech={data.parts_of_speech} reading={data.reading} definition={data.definition}/>
+            <WordCard id = {data._id} word={data.word} part_of_speech={data.parts_of_speech} reading={data.reading} definition={data.definition} onDelete={cardDeleteHandler}/>
         </Grid>
     )
     // return (

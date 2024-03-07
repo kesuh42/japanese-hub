@@ -7,6 +7,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 function WordCard (props) {
+    const handleDelete = async () => {
+      fetch(`http://localhost:5000/${props.id}`, {
+        method: "DELETE"
+      }).then(res => res.json({message: "Deleted Place"}))
+
+      props.onDelete();
+    }
 
     return (
         <Card sx={{ width: 1 }}>
@@ -15,7 +22,7 @@ function WordCard (props) {
             Word of the Day
           </Typography> */}
           <Typography variant="h5" component="div">
-            {props.word} , {props.reading}
+            {props.word ? `${props.word} , ${props.reading}` : props.reading}
           </Typography>
           {props.part_of_speech.map((item) => <Typography sx={{ mb: 1.5 }} color="text.secondary">{item}</Typography>)}
           {props.definition.map((entry) => 
@@ -27,7 +34,7 @@ function WordCard (props) {
           )}
         </CardContent>
         <CardActions>
-          <Button size="small">Delete Card</Button>
+          <Button size="small" onClick={handleDelete}>Delete Card</Button>
         </CardActions>
       </Card>
     );
