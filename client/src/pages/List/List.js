@@ -155,7 +155,7 @@ function List() {
     const [cardData, setCardData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/card')
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/card`)
         .then(response => response.json())
         .then(data => setCardData(data));
     });

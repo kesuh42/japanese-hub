@@ -1,0 +1,7 @@
+{
+    "env": {
+        "DB_USER": "KevinSuh",
+        "DB_PASSWORD": "MWnDYa9Yghy2mZLQ",
+        "DB_NAME": "card_deck"
+    }
+}

@@ -17,7 +17,7 @@ app.use(express.static("client/build"));
 
 //DATABASE CODE HERE!!
 mongoose.connect(
-    "mongodb+srv://KevinSuh:MWnDYa9Yghy2mZLQ@japanese-hub.bpoenps.mongodb.net/card_deck?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@japanese-hub.bpoenps.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
 ).then(() => {
     console.log("Connection with database established")
 }).catch(() => {

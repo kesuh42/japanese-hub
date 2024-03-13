@@ -4,10 +4,10 @@ import { TextField, Container } from '@mui/material';
 function Search () {
     function handleSubmit(e) {
         e.preventDefault();
-        fetch('http://localhost:5000/JishoSearch?searchterm=' + `${e.target.elements.searchterm.value}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/JishoSearch?searchterm=` + `${e.target.elements.searchterm.value}`)
         .then(response => response.json())
         .then(data => {
-            fetch("http://localhost:5000/card", 
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/card`, 
                 {
                     headers: {
                       'Accept': 'application/json',

@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 function WordCard (props) {
     const handleDelete = async () => {
-      fetch(`http://localhost:5000/${props.id}`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/${props.id}`, {
         method: "DELETE"
       }).then(res => res.json({message: "Deleted Place"}))
 

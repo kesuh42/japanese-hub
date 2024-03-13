@@ -20,10 +20,10 @@ function App() {
       <React.Fragment>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Search />} />
           <Route path="/search" element={<Search />} />
           <Route path="/list" element={<List />} />
-          <Route path="/archive" element={<Archive />} />
+          <Route path="/archive" element={<List />} />
         </Routes>
       </React.Fragment>
     </BrowserRouter>
