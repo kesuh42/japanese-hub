@@ -18,9 +18,9 @@ function Header () {
                 <li className="nav-item">
                     <a className="nav-link" href="/list">List</a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <a className="nav-link" href="/archive">Archive</a>
-                </li>
+                </li> */}
                 </ul>
             </div>
             </nav>
