@@ -7,7 +7,7 @@ const app = express();
 
 const cors = require('cors');
 app.use(cors({
-    origin: 'https://japanese-hub-c8801.web.app/'
+    origin: 'https://japanese-hub-c8801.web.app'
 }));
 
 app.use(express.urlencoded({extended: false}));
